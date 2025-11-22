@@ -1,0 +1,17 @@
+@import "../../colors.scss";
+
+.StationPanelCurrentTicket {
+    background-color: $yellow-branded;
+    text-align: center;
+    padding: 15px;
+    margin: 30px 40px;
+    border-radius: 15px;
+    color: $black-branded;
+    &__text {
+        font-size: x-large;
+    }
+    &__code {
+        font-size: 64px;
+        font-weight: bold;
+    }
+}

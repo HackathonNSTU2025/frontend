@@ -25,10 +25,13 @@
     }
     &__header {
         position: relative;
+        display: flex;
+        align-items: center;
     }
     &__back {
         position: absolute;
         left: 30px;
+        display: flex;
         cursor: pointer;
     }
     &__event-title {

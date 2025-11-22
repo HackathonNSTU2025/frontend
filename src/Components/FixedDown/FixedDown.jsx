@@ -27,7 +27,7 @@ let FixedDown = (props) => {
         <div className="TicketPage__fixed" ref={fixedRef}>
             {location.pathname === "/ticket" && (
                 <>
-                    <NotificationWidget />
+                    <NotificationWidget queueTime="2025-11-22T23:37:00" />
                     <TicketWarning />
                 </>
             )}
@@ -35,6 +35,7 @@ let FixedDown = (props) => {
             {location.pathname === "/QueueList" && (
                 <TicketWidget ticketCode="K-12" timeRemaining={35} />
             )}
+            {location.pathname === "/aboutStation" && <TicketWarning />}
         </div>
     );
 };

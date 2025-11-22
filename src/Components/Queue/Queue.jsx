@@ -5,7 +5,7 @@ let Queue = (props) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/aboutStation&id=${props.id}`);
+        navigate(`/aboutStation?id=${props.id}`);
     };
 
     return (

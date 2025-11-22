@@ -2,16 +2,18 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./main.scss";
 
-import QueueListPage from "./Components/QueueListPage/QueueListPage";
-import GetInline from "./Components/GetInline/GetInline";
-import TicketPage from "./Components/TicketPage/TicketPage";
+// import GetInline from "./Components/GetInline/GetInline";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 
 import { fakeUsers } from "./fakeUsers";
-import Footer from "./Components/Footer/Footer";
+// import Footer from "./Components/Footer/Footer";
 import FixedDown from "./Components/FixedDown/FixedDown";
+
+import QueueListPage from "./Components/QueueListPage/QueueListPage";
 import AboutStationPage from "./Components/AboutStationPage/AboutStationPage";
+import StationPanelPage from "./Components/StationPanelPage/StationPanelPage";
+import TicketPage from "./Components/TicketPage/TicketPage";
 
 function App() {
     const [users, setUsers] = useState(fakeUsers);
@@ -95,24 +97,28 @@ function App() {
             title: "Карьерные консультации",
             image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
             description: "Описание 1",
+            isActive: true,
         },
         {
             id: 2,
             title: "Турнир по поиску багов на время",
             image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
             description: "Описание 2",
+            isActive: true,
         },
         {
             id: 3,
             title: "Разбор портфолио",
             image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
             description: "Описание 3",
+            isActive: true,
         },
         {
             id: 4,
             title: "Код-ревью в реальном времени",
             image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
             description: "Описание 4",
+            isActive: false,
         },
     ];
     return (
@@ -131,9 +137,12 @@ function App() {
                                 <AboutStationPage aboutStation={aboutStation} />
                             }
                         />
+                        <Route
+                            path="/StationPanel"
+                            element={<StationPanelPage />}
+                        />
                     </Routes>
                 </main>
-                {/* <Footer /> */}
                 <FixedDown />
             </div>
         </BrowserRouter>

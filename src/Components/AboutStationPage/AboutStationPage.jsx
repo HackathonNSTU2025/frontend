@@ -4,19 +4,11 @@ import AboutStation from "../AboutStation/AboutStation";
 import FixedDown from "../FixedDown/FixedDown";
 import "./AboutStationPage.scss";
 
-function AboutStationPage() {
+function AboutStationPage(props) {
     return (
         <>
             {/* <HeaderBack /> */}
-            <AboutStation
-                stationName={"Карьерные консультации"}
-                stationDescription={
-                    "Стоим, ждём всех, у кого есть вопросы про карьеру в IT! С чего начать? Как сменить профессию? Как вырасти до тимлида? Подходи — обсудим твой уникальный путь."
-                }
-                imageURL={
-                    "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg"
-                }
-            />
+            <AboutStation aboutStation={props.aboutStation} />
             {/* <GetInline />
             <FixedDown /> */}
         </>
