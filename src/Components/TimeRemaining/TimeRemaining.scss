@@ -1,0 +1,20 @@
+@import "../../colors.scss";
+
+.TimeRemaining {
+    text-align: center;
+    z-index: 2;
+    background-color: $green-branded;
+    position: relative;
+    top: -15px;
+    transform: translateY(-50%);
+    color: white;
+    height: min-content;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    // &__text {
+    // }
+    &__time {
+        font-weight: bold;
+    }
+}
