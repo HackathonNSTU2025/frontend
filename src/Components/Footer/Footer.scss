@@ -1,0 +1,14 @@
+@import "../../colors.scss";
+
+.Footer {
+    background-color: light-dark($background-light, $background-dark);
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; // или max-width: 1200px; если хочешь фиксированную ширину
+    text-align: center;
+    color: $gray-color;
+    z-index: 1;
+    padding: 0 15px; // чтобы не упиралось в края экрана
+}

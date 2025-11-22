@@ -1,14 +1,14 @@
 @import "../../colors.scss";
 
-.RegistrationCode {
+.TicketCode {
     z-index: 1;
     background-color: $yellow-branded;
     color: $black-branded;
     width: 100%;
     top: 0;
     text-align: center;
-
     position: relative;
+    margin-bottom: 35px;
     &__num {
         font-size: 64px;
         font-weight: bold;

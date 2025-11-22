@@ -1,0 +1,55 @@
+@import "../../colors.scss";
+
+.NotificationWidget {
+    &__inner {
+        background-color: $purple-branded;
+        position: relative;
+        // top: -15px;
+        // transform: translateY(-50%);
+        color: white;
+        height: min-content;
+        padding: 15px;
+        margin: 0 15px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+    }
+    &__text {
+        font-size: medium;
+        text-align: left;
+    }
+    &__content {
+        align-items: center;
+        justify-content: space-between;
+        display: grid;
+        gap: 5px;
+        &__arrow {
+        }
+    }
+    &__buttonsRow {
+        align-items: center;
+        display: flex;
+        justify-content: right;
+        gap: 20px;
+        cursor: pointer;
+    }
+    &__buttonYes {
+        font-size: medium;
+        background-color: $purple-button;
+        text-align: center;
+        width: fit-content;
+        padding: 3px 20px;
+        margin: 8px 10px;
+        margin-bottom: 3px;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .NotificationWidget__inner {
+        justify-content: left;
+    }
+}

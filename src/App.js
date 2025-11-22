@@ -1,18 +1,17 @@
 import { useState } from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./main.scss";
 
-import RegistrationCode from "./Components/RegistrationCode/RegistrationCode";
-import StationName from "./Components/StationName/StationName";
-import QueueList from "./Components/QueueList/QueueList";
-import TimeToArrive from "./Components/TimeToArrive/TimeToArrive";
-import TimeRemaining from "./Components/TimeRemaining/TimeRemaining";
+import QueueListPage from "./Components/QueueListPage/QueueListPage";
 import GetInline from "./Components/GetInline/GetInline";
-
+import TicketPage from "./Components/TicketPage/TicketPage";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 
 import { fakeUsers } from "./fakeUsers";
+import Footer from "./Components/Footer/Footer";
+import FixedDown from "./Components/FixedDown/FixedDown";
+import AboutStationPage from "./Components/AboutStationPage/AboutStationPage";
 
 function App() {
     const [users, setUsers] = useState(fakeUsers);
@@ -54,23 +53,90 @@ function App() {
     //         </div>
     //     );
     // }
-
+    const queues = [
+        {
+            queuesTitle: "Доступные стойки",
+            queuesList: [
+                {
+                    id: 1,
+                    title: "Карьерные консультации",
+                    inLine: true,
+                    isCompleted: false,
+                },
+                {
+                    id: 2,
+                    title: "Турнир по поиску багов",
+                    inLine: false,
+                    isCompleted: false,
+                },
+                {
+                    id: 3,
+                    title: "Разбор портфолио",
+                    inLine: false,
+                    isCompleted: false,
+                },
+            ],
+        },
+        {
+            queuesTitle: "Пройденные стойки",
+            queuesList: [
+                {
+                    id: 4,
+                    title: "Код-ревью в реальном времени",
+                    inLine: false,
+                    isCompleted: true,
+                },
+            ],
+        },
+    ];
+    let aboutStation = [
+        {
+            id: 1,
+            title: "Карьерные консультации",
+            image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
+            description: "Описание 1",
+        },
+        {
+            id: 2,
+            title: "Турнир по поиску багов на время",
+            image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
+            description: "Описание 2",
+        },
+        {
+            id: 3,
+            title: "Разбор портфолио",
+            image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
+            description: "Описание 3",
+        },
+        {
+            id: 4,
+            title: "Код-ревью в реальном времени",
+            image: "https://vanrobaeysludwigoils.com/wp-content/uploads/2022/10/post4.jpg",
+            description: "Описание 4",
+        },
+    ];
     return (
-        <div className="wrapper">
-            <main>
-                <RegistrationCode
-                    registrationCode="К-12"
-                    peopleRemaining={7}
-                    eventName={"Мир ИТ Изнутри"}
-                />
-                <TimeRemaining timeRemaining={35} />
-                <TimeToArrive timeToArrive={"10:47"} />
-                <StationName stationName={"Карьерные консультации"} />
-                <QueueList />
-                <GetInline />
-            </main>
-            <footer></footer>
-        </div>
+        <BrowserRouter>
+            <div className="wrapper">
+                <main>
+                    <Routes>
+                        <Route path="/ticket" element={<TicketPage />} />
+                        <Route
+                            path="/QueueList"
+                            element={<QueueListPage queues={queues} />}
+                        />
+                        <Route
+                            path="/aboutStation"
+                            element={
+                                <AboutStationPage aboutStation={aboutStation} />
+                            }
+                        />
+                    </Routes>
+                </main>
+                {/* <Footer /> */}
+                <FixedDown />
+            </div>
+        </BrowserRouter>
     );
 }
 

@@ -1,19 +1,24 @@
 @import "../../colors.scss";
 
 .TimeRemaining {
-    text-align: center;
-    z-index: 2;
-    background-color: $green-branded;
-    position: relative;
-    top: -15px;
-    transform: translateY(-50%);
-    color: white;
-    height: min-content;
-    padding: 15px;
-    margin: 15px;
-    border-radius: 15px;
-    // &__text {
-    // }
+    width: 100%;
+    transform: translateY(50%);
+    padding: 0 20px;
+
+    &__inner {
+        text-align: center;
+        z-index: 2;
+        background-color: $green-branded;
+        position: absolute;
+        color: white;
+        height: min-content;
+        border-radius: 15px;
+        justify-content: space-between;
+        bottom: 0;
+        width: 100%;
+        position: relative;
+        padding: 10px;
+    }
     &__time {
         font-weight: bold;
     }
