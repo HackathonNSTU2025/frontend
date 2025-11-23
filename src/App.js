@@ -1,19 +1,77 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./main.scss";
+import { FiArrowRight } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
-// import GetInline from "./Components/GetInline/GetInline";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
-
+import LoginPage from "./Components/LoginPage/LoginPage";
+import RegistrationPage from "./Components/RegistrationPage/RegistrationPage";
 import { fakeUsers } from "./fakeUsers";
-// import Footer from "./Components/Footer/Footer";
-import FixedDown from "./Components/FixedDown/FixedDown";
 
+import FixedDown from "./Components/FixedDown/FixedDown";
 import QueueListPage from "./Components/QueueListPage/QueueListPage";
 import AboutStationPage from "./Components/AboutStationPage/AboutStationPage";
 import StationPanelPage from "./Components/StationPanelPage/StationPanelPage";
 import TicketPage from "./Components/TicketPage/TicketPage";
+
+function PageWrapper({ children }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+            {children}
+        </motion.div>
+    );
+}
+
+function AnimatedRoutes({ queues, aboutStation }) {
+    const location = useLocation();
+
+    return (
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route
+                    path="/ticket"
+                    element={
+                        <PageWrapper>
+                            <TicketPage />
+                        </PageWrapper>
+                    }
+                />
+
+                <Route
+                    path="/QueueList"
+                    element={
+                        <PageWrapper>
+                            <QueueListPage queues={queues} />
+                        </PageWrapper>
+                    }
+                />
+
+                <Route
+                    path="/aboutStation"
+                    element={
+                        <PageWrapper>
+                            <AboutStationPage aboutStation={aboutStation} />
+                        </PageWrapper>
+                    }
+                />
+
+                <Route
+                    path="/StationPanel"
+                    element={
+                        <PageWrapper>
+                            <StationPanelPage />
+                        </PageWrapper>
+                    }
+                />
+            </Routes>
+        </AnimatePresence>
+    );
+}
 
 function App() {
     const [users, setUsers] = useState(fakeUsers);
@@ -33,65 +91,74 @@ function App() {
         setCurrentUser(null);
     };
 
-    // Если пользователь не авторизован, показываем вход или регистрацию
-    // if (!currentUser) {
-    //     return (
-    //         <div className="wrapper">
-    //             {isRegistering ? (
-    //                 <>
-    //                     <Register onRegister={handleRegister} users={users} />
-    //                     <button onClick={() => setIsRegistering(false)}>
-    //                         Уже есть аккаунт
-    //                     </button>
-    //                 </>
-    //             ) : (
-    //                 <>
-    //                     <Login onLogin={handleLogin} users={users} />
-    //                     <button onClick={() => setIsRegistering(true)}>
-    //                         Создать аккаунт
-    //                     </button>
-    //                 </>
-    //             )}
-    //         </div>
-    //     );
-    // }
+    // Если пользователь не авторизован — показываем регистрацию / вход
+    if (!currentUser) {
+        return (
+            <div className="wrapper">
+                <div className="auth">
+                    <div className="container">
+                        <div className="auth__inner">
+                            {isRegistering ? (
+                                <>
+                                    <h2>Регистрация</h2>
+
+                                    <RegistrationPage
+                                        onRegister={handleRegister}
+                                        users={users}
+                                    />
+
+                                    <div
+                                        onClick={() => setIsRegistering(false)}
+                                        className="isHaveAccaunt"
+                                    >
+                                        Уже есть аккаунт <FiArrowRight />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <h2>Вход</h2>
+
+                                    <LoginPage
+                                        onLogin={handleLogin}
+                                        users={users}
+                                    />
+
+                                    <div
+                                        onClick={() =>
+                                            setIsRegistering(true)
+                                        }
+                                        className="isHaveAccaunt"
+                                    >
+                                        Создать аккаунт <FiArrowRight />
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Данные
     const queues = [
         {
             queuesTitle: "Доступные стойки",
             queuesList: [
-                {
-                    id: 1,
-                    title: "Карьерные консультации",
-                    inLine: true,
-                    isCompleted: false,
-                },
-                {
-                    id: 2,
-                    title: "Турнир по поиску багов",
-                    inLine: false,
-                    isCompleted: false,
-                },
-                {
-                    id: 3,
-                    title: "Разбор портфолио",
-                    inLine: false,
-                    isCompleted: false,
-                },
+                { id: 1, title: "Карьерные консультации", inLine: true, isCompleted: false },
+                { id: 2, title: "Турнир по поиску багов", inLine: false, isCompleted: false },
+                { id: 3, title: "Разбор портфолио", inLine: false, isCompleted: false },
             ],
         },
         {
             queuesTitle: "Пройденные стойки",
             queuesList: [
-                {
-                    id: 4,
-                    title: "Код-ревью в реальном времени",
-                    inLine: false,
-                    isCompleted: true,
-                },
+                { id: 4, title: "Код-ревью в реальном времени", inLine: false, isCompleted: true },
             ],
         },
     ];
-    let aboutStation = [
+
+    const aboutStation = [
         {
             id: 1,
             title: "Карьерные консультации",
@@ -121,28 +188,17 @@ function App() {
             isActive: false,
         },
     ];
+
     return (
         <BrowserRouter>
             <div className="wrapper">
                 <main>
-                    <Routes>
-                        <Route path="/ticket" element={<TicketPage />} />
-                        <Route
-                            path="/QueueList"
-                            element={<QueueListPage queues={queues} />}
-                        />
-                        <Route
-                            path="/aboutStation"
-                            element={
-                                <AboutStationPage aboutStation={aboutStation} />
-                            }
-                        />
-                        <Route
-                            path="/StationPanel"
-                            element={<StationPanelPage />}
-                        />
-                    </Routes>
+                    <AnimatedRoutes
+                        queues={queues}
+                        aboutStation={aboutStation}
+                    />
                 </main>
+
                 <FixedDown />
             </div>
         </BrowserRouter>

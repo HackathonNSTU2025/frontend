@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import "./RegistrationPage.scss"
+import { FiArrowRight } from "react-icons/fi";
 function Register({ onRegister, users }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -16,9 +17,7 @@ function Register({ onRegister, users }) {
     };
 
     return (
-        <div className="login-box">
-            <h2>Регистрация</h2>
-
+        <div className="auth__form">
             <input
                 placeholder="Логин"
                 value={username}
@@ -32,7 +31,7 @@ function Register({ onRegister, users }) {
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={register}>Создать аккаунт</button>
+            <button onClick={register} className="auth__btn">Создать аккаунт <FiArrowRight /></button>
         </div>
     );
 }

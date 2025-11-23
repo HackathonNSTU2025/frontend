@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FiArrowRight } from "react-icons/fi";
 
 function Login({ onLogin, users }) {
     const [username, setUsername] = useState("");
@@ -18,8 +19,8 @@ function Login({ onLogin, users }) {
     };
 
     return (
-        <div className="login-box">
-            <h2>Вход</h2>
+        <div className="auth__form">
+            
 
             <input
                 placeholder="Логин"
@@ -34,7 +35,7 @@ function Login({ onLogin, users }) {
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleLogin}>Войти</button>
+            <button onClick={handleLogin} className="auth__btn">Войти <FiArrowRight /></button>
             {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
