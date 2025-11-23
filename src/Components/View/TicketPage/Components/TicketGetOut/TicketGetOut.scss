@@ -1,0 +1,28 @@
+@import "../../../../../colors.scss";
+
+.TicketGetOut {
+    &__inner {
+        padding: 15px;
+    }
+}
+
+.getOutOfLine {
+    background: #c24949;
+    color: white;
+    outline: none;
+    border-radius: 10px;
+    // margin: 15px;
+    width: 100%;
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    b {
+        font-size: medium;
+    }
+    &--disabled {
+        background: $gray-color;
+        cursor: default;
+    }
+}

@@ -1,0 +1,19 @@
+@import "../../../../../colors.scss";
+
+.StationPanelQR {
+    background-color: light-dark($background-light, $background-dark);
+    width: 40%;
+    text-align: center;
+    font-size: x-large;
+    // font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: light-dark($main-font-light, $main-font-dark);
+    &__Code {
+        padding: 15px;
+        // background-color: #808080;
+        // width: 400px;
+        // height: 400px;
+    }
+}

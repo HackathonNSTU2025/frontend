@@ -1,0 +1,97 @@
+@import "../../../../../colors.scss";
+
+.AboutStation {
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    padding-bottom: 15px;
+    margin: 0 20px;
+    &__image {
+        img {
+            max-width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+    }
+    &__name {
+        padding: 5px;
+        font-size: large;
+        font-weight: bold;
+    }
+    &__description {
+        font-size: medium;
+        text-align: left;
+    }
+    &__header {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    &__back {
+        position: absolute;
+        left: 30px;
+        cursor: pointer;
+        display: flex;
+    }
+    &__event-title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 20px 0;
+        justify-content: center;
+    }
+    &__content {
+        padding: 15px 20px 30px 20px;
+    }
+    &__card {
+        background-color: light-dark($foreground-light, $foreground-dark);
+        border-radius: 10px;
+        &--disabled {
+            opacity: 0.6;
+        }
+    }
+    &__inner {
+        display: grid;
+        gap: 30px;
+    }
+    &--disabled {
+        opacity: 0.9;
+    }
+}
+.getInLine {
+    background: $green-branded;
+    color: white;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    b {
+        font-size: medium;
+    }
+    &--disabled {
+        background: $gray-color;
+        cursor: default;
+    }
+}
+.getOutOfLine {
+    background: #c24949;
+    color: white;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    b {
+        font-size: medium;
+    }
+    &--disabled {
+        background: $gray-color;
+        cursor: default;
+    }
+}

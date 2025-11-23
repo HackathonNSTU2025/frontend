@@ -1,0 +1,14 @@
+@import "../../../../../colors.scss";
+
+.StationPanelQueueItem {
+    background-color: light-dark($foreground-light, $foreground-dark);
+    font-size: 40px;
+    padding: 20px;
+    margin: 30px 40px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: light-dark($main-font-light, $main-font-dark);
+}

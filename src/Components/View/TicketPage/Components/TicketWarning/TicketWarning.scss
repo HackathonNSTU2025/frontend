@@ -1,0 +1,8 @@
+@import "../../../../../colors.scss";
+
+.TicketWarning {
+    background-color: light-dark($background-light, $background-dark);
+    font-size: medium;
+    text-align: center;
+    color: $gray-color;
+}
